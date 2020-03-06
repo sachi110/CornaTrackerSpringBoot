@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Corna virus tracker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+<h1 >total reported yest</h1>
+<h1 th:text="${totaldeath}"></h1>
+
+
+<table class="table">
+
+    <tr>
+
+        <th>Province/State</th>
+        <th>Country/Region</th>
+        <th>Lat</th>
+        <th>Long</th>
+        <th>Last Date/Total Case Reported</th>
+    </tr>
+    <tr th:each="locationdetail : ${locationdetails}">
+        <td th:text="${locationdetail.Province}"></td>
+        <td th:text="${locationdetail.Country}"></td>
+        <td th:text="${locationdetail.Lat}"></td>
+        <td th:text="${locationdetail.Long}"></td>
+        <td th:text="${locationdetail.date}"></td>
+
+
+    </tr>
+</table>
+
+</body>
+
+</html>
