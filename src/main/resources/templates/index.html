@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19 </title>
+</head>
+<br>
+<h1><a href="/dead">click here for Dead Report </a></h1></br>
+<h1><a href="/home">click here for  Reported Case </a></h1></br>
+<h1><a href="/recovered">click here for  Recovered Report </a></h1></br>
+
+<div>
+<h1 >Total reported case till  yesterday</h1>
+    <font color="red">
+<h1   th:text="${totalReported}"></h1></font>
+</div><div>
+
+<h1 >Total Recovered case till  yesterday</h1>
+    <font color="green">   <h1 th:text="${totalRecovered}"></h1></font>
+</div><div>
+    <h1 >Total reported case till  yesterday</h1>
+    <font color="red">
+<h1 th:text="${reportedDeath}"></h1>
+    </font>
+</div>
+<a href=" https://systems.jhu.edu/">
+<h5>
+Data Provided by Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE):</h5>
+</a>
+</body>
+</html>
