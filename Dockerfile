@@ -2,7 +2,7 @@
 FROM openjdk:8-jdk-alpine
 
 # Add Maintainer Info
-MAINTAINER Sachchida nand singh<sachchidanand1997@gmail.com>
+LABEL maintainer="callicoder@gmail.com"
 
 # Add a volume pointing to /tmp
 VOLUME /tmp
@@ -14,8 +14,7 @@ EXPOSE 8080
 ARG JAR_FILE=target/Cornacase-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} Cornacase-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} Cornacase.jar
 
 # Run the jar file 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/Cornacase-0.0.1-SNAPSHOT.jar"]
-
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/Cornacase.jar"]

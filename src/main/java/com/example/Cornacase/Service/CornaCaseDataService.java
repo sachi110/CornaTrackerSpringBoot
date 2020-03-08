@@ -53,7 +53,7 @@ public class CornaCaseDataService {
 
 
 			}
-			System.out.println(inputList);
+			//System.out.println(inputList);
 		}catch ( Exception e)
 		{
 			System.err.println(e.getStackTrace());
@@ -88,7 +88,7 @@ public class CornaCaseDataService {
 
 
 			}
-			System.out.println(inputList);
+			//System.out.println(inputList);
 		}catch ( Exception e)
 		{
 			System.err.println(e.getStackTrace());
@@ -123,7 +123,7 @@ public class CornaCaseDataService {
 
 
 			}
-			System.out.println(inputList);
+			//System.out.println(inputList);
 		}catch ( Exception e)
 		{
 			System.err.println(e.getStackTrace());

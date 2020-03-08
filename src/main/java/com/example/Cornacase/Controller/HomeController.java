@@ -12,79 +12,77 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @Autowired
-    CornaCaseDataService cornaCaseDataService;
+	@Autowired
+	CornaCaseDataService cornaCaseDataService;
 
-    @GetMapping("/")
-   
-    public String index(Model model) {
-        int totalDeath = 0;
-        int totalRecovered = 0;
-        int totalReported = 0;
-        List<DATA> reportedCase = cornaCaseDataService.getData();
-        List<DATA> reportedDeath = cornaCaseDataService.getDeathData();
-        List<DATA> reportedRecovered = cornaCaseDataService.getRecoveredData();
+	@GetMapping("/")
 
-        try {
-            totalReported = reportedCase.stream().mapToInt(start -> start.getDate()).sum();
-            totalRecovered = reportedRecovered.stream().mapToInt(start -> start.getDate()).sum();
-            totalDeath = reportedDeath.stream().mapToInt(start -> start.getDate()).sum();
-        } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+	public String index(Model model) {
+		int totalDeath = 0;
+		int totalRecovered = 0;
+		int totalReported = 0;
+		List<DATA> reportedCase = cornaCaseDataService.getData();
+		List<DATA> reportedDeath = cornaCaseDataService.getDeathData();
+		List<DATA> reportedRecovered = cornaCaseDataService.getRecoveredData();
 
-        }
-        model.addAttribute("totalReported", totalReported);
-        model.addAttribute("totalRecovered", totalRecovered);
-        model.addAttribute("reportedDeath", totalDeath);
+		try {
+			totalReported = reportedCase.stream().mapToInt(start -> start.getDate()).sum();
+			totalRecovered = reportedRecovered.stream().mapToInt(start -> start.getDate()).sum();
+			totalDeath = reportedDeath.stream().mapToInt(start -> start.getDate()).sum();
+		} catch (Exception e) {
+			System.err.println(e.getStackTrace());
 
+		}
+		model.addAttribute("totalReported", totalReported);
+		model.addAttribute("totalRecovered", totalRecovered);
+		model.addAttribute("reportedDeath", totalDeath);
 
-        return "index";
-    }
+		return "index";
+	}
 
-    @GetMapping("/home")
-    public String home(Model model) {
-        int totaldeath = 0;
-        List<DATA> locationdetails = cornaCaseDataService.getData();
-        try {
-            totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
-        } catch (Exception e) {
+	@GetMapping("/home")
+	public String home(Model model) {
+		int totaldeath = 0;
+		List<DATA> locationdetails = cornaCaseDataService.getData();
+		try {
+			totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
+		} catch (Exception e) {
 
-        }
-        model.addAttribute("locationdetails", locationdetails);
-        model.addAttribute("totaldeath", totaldeath);
+		}
+		model.addAttribute("locationdetails", locationdetails);
+		model.addAttribute("totaldeath", totaldeath);
 
-        return "home";
-    }
+		return "home";
+	}
 
-    @GetMapping("/dead")
-    public String dead(Model model) {
-        int totaldeath = 0;
-        List<DATA> locationdetails = cornaCaseDataService.getDeathData();
-        try {
-            totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
-        } catch (Exception e) {
+	@GetMapping("/dead")
+	public String dead(Model model) {
+		int totaldeath = 0;
+		List<DATA> locationdetails = cornaCaseDataService.getDeathData();
+		try {
+			totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
+		} catch (Exception e) {
 
-        }
-        model.addAttribute("locationdetails", locationdetails);
-        model.addAttribute("totaldeath", totaldeath);
+		}
+		model.addAttribute("locationdetails", locationdetails);
+		model.addAttribute("totaldeath", totaldeath);
 
-        return "dead";
-    }
+		return "dead";
+	}
 
-    @GetMapping("/recovered")
-    public String recorvedData(Model model) {
-        int totaldeath = 0;
-        List<DATA> locationdetails = cornaCaseDataService.getDeathData();
-        try {
-            totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
-        } catch (Exception e) {
+	@GetMapping("/recovered")
+	public String recorvedData(Model model) {
+		int totaldeath = 0;
+		List<DATA> locationdetails = cornaCaseDataService.getDeathData();
+		try {
+			totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
+		} catch (Exception e) {
 
-        }
-        model.addAttribute("locationdetails", locationdetails);
-        model.addAttribute("totaldeath", totaldeath);
+		}
+		model.addAttribute("locationdetails", locationdetails);
+		model.addAttribute("totaldeath", totaldeath);
 
-        return "recovered";
-    }
-
+		return "recovered";
+	}
 
 }

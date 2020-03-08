@@ -39,19 +39,19 @@
 	<font color="aqua">
 		<h1>Reported case till yesterday</h1> <!-- <input type="hidden" id="one1"
 		th:value="${totalReported}"> -->
-		<h1 id="one" th:value="${totalReported}" th:text="${totalReported}"></h1>
+		<h1 id="one"  th:text="${totalReported}"></h1>
 	</font>
 </div>
 <div>
 	<h1>Recovered case till yesterday</h1>
-	<h1 id="two" th:value="${totalRecovered}" th:text="${totalRecovered}"></h1>
+	<h1 id="two"  th:text="${totalRecovered}"></h1>
 	</font>
 </div>
 <div>
 	<font color="red">
 		<h1>Reported death till yesterday</h1>
 
-		<h1 id="three" th:value="${reportedDeath}" th:text="${reportedDeath}"></h1>
+		<h1 id="three"  th:text="${reportedDeath}"></h1>
 	</font>
 </div>
 <a href=" https://systems.jhu.edu/">
@@ -65,7 +65,7 @@
 	var oneValue2 = document.getElementById('three').innerHTML;
 	console.log(oneValue);
     var chartData = {
-    labels: ["Total", "Death", "Recovered"],
+    labels: ["Total", "Recovered", "Death"],
     datasets: [
         {
             fillColor: "#79D1CF",
