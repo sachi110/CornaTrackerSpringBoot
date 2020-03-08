@@ -3,6 +3,7 @@ package com.example.Cornacase.Controller;
 import com.example.Cornacase.Model.DATA;
 import com.example.Cornacase.Service.CornaCaseDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class HomeController {
     CornaCaseDataService cornaCaseDataService;
 
     @GetMapping("/")
+    @Scheduled(initialDelay = 1000, fixedRate =60000*60*24 )
     public String index(Model model) {
         int totalDeath = 0;
         int totalRecovered = 0;
