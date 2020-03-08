@@ -3,49 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <title>COVID-19</title>
-</head>
-<br>
-
-<font color="red">
-	<h1>
-		<a href="/dead"> Dead Report </a>
-	</h1>
-	</br>
-</font>
-<h1>
-	<a href="/home"> Reported Case </a>
-</h1>
-</br>
-<font color="green">
-	<h1>
-		<a href="/recovered">Recovered Report </a>
-	</h1>
-	</br>
-</font>
-
+<script src="https://rawgit.com/nnnick/Chart.js/v1.0.2/Chart.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<div class="container-fluid">
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<font color="red">
+				<h1>
+					<a href="/dead"> Dead Report </a>
+				</h1> </br>
+			</font>
+			<h1>
+				<a href="/home"> Reported Case </a>
+			</h1>
+			</br> <font color="green">
+				<h1>
+					<a href="/recovered">Recovered Report </a>
+				</h1> </br>
+			</font>
+		</div>
+		<div class="col-sm-3" >
+			
+		</div>
+		<div class="col-sm-3" style="align:right">
+			<canvas id="myChart2" height="300" width="300"></canvas>
+		</div>
+		
+	</div>
+</div>
 <div>
 	<font color="aqua">
-		<h1>Reported case till yesterday</h1>
-
-		<h1 th:text="${totalReported}"></h1>
+		<h1>Reported case till yesterday</h1> <!-- <input type="hidden" id="one1"
+		th:value="${totalReported}"> -->
+		<h1 id="one" th:value="${totalReported}" th:text="${totalReported}"></h1>
 	</font>
 </div>
 <div>
-	<font color="green">
-		<h1>Recovered case till yesterday</h1>
-		<h1 th:text="${totalRecovered}"></h1>
+	<h1>Recovered case till yesterday</h1>
+	<h1 id="two" th:value="${totalRecovered}" th:text="${totalRecovered}"></h1>
 	</font>
 </div>
 <div>
 	<font color="red">
 		<h1>Reported death till yesterday</h1>
 
-		<h1 th:text="${reportedDeath}"></h1>
+		<h1 id="three" th:value="${reportedDeath}" th:text="${reportedDeath}"></h1>
 	</font>
 </div>
 <a href=" https://systems.jhu.edu/">
-	<h5>Data Provided by Johns Hopkins University Center for Systems
-		Science and Engineering (JHU CSSE):</h5>
+	<h6>Data Provided by Johns Hopkins University Center for Systems
+		Science and Engineering (JHU CSSE):</h6>
 </a>
+<script>
+	
+	var oneValue = document.getElementById('one').innerHTML;
+	var oneValue1 = document.getElementById('two').innerHTML;
+	var oneValue2 = document.getElementById('three').innerHTML;
+	console.log(oneValue);
+    var chartData = {
+    labels: ["Total", "Death", "Recovered"],
+    datasets: [
+        {
+            fillColor: "#79D1CF",
+            strokeColor: "#79D1CF",          
+            
+            data: [oneValue,oneValue1, oneValue2]
+        }
+    ]
+};
+var ctx = document.getElementById("myChart2").getContext("2d");
+var myBar = new Chart(ctx).Bar(chartData, {
+    showTooltips: false,
+    onAnimationComplete: function () {
+
+        var ctx = this.chart.ctx;
+        ctx.font = this.scale.font;
+        ctx.fillStyle = this.scale.textColor
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+
+        this.datasets.forEach(function (dataset) {
+            dataset.bars.forEach(function (bar) {
+                ctx.fillText(bar.value, bar.x, bar.y - 5);
+            });
+        })
+    }
+});
+</script>
 </body>
 </html>

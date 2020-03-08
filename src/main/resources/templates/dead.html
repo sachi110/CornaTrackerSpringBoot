@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-
-
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <title>Corna virus tracker</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Corna virus tracker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
 
 </head>
 
 <body>
-<div class="text-center">
-<font color="red">
-  <h1 th:text="${totaldeath}"></h1></font>
-    <h1 >Total Dead  case till  yesterday</h1>  
-</div>
+	<div class="text-center">
+		<font color="red">
+			<h1 th:text="${totaldeath}"></h1>
+		</font>
+		<h1>Total Dead case till yesterday</h1>
+	</div>
 
 
-<table class="table table-striped">
+	<table class="table table-striped">
 
-    <tr>
+		<tr>
 
-        <th>Province/State</th>
-        <th>Country/Region</th>
-        <th>Lat</th>
-        <th>Long</th>
-        <th>Last Date/Total Case Reported</th>
-    </tr>
-    <tr th:each="locationdetail : ${locationdetails}">
-        <td th:text="${locationdetail.Province}"></td>
-        <td th:text="${locationdetail.Country}"></td>
-        <td th:text="${locationdetail.Lat}"></td>
-        <td th:text="${locationdetail.Long}"></td>
-        <td th:text="${locationdetail.date}"></td>
+			<th>Province/State</th>
+			<th>Country/Region</th>
+			<th>Lat</th>
+			<th>Long</th>
+			<th>Last Date/Total Case Reported</th>
+		</tr>
+		<tr th:each="locationdetail : ${locationdetails}">
+			<td th:text="${locationdetail.Province}"></td>
+			<td th:text="${locationdetail.Country}"></td>
+			<td th:text="${locationdetail.Lat}"></td>
+			<td th:text="${locationdetail.Long}"></td>
+			<td th:text="${locationdetail.date}"></td>
 
 
-    </tr>
-</table>
+		</tr>
+	</table>
 
 </body>
 
