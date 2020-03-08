@@ -1,33 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>COVID-19 </title>
+<meta charset="UTF-8">
+<title>COVID-19</title>
 </head>
 <br>
+
 <font color="red">
-<h1><a href="/dead">click here for Dead Report </a></h1></br></font>
-<h1><a href="/home">click here for  Reported Case </a></h1></br>
+	<h1>
+		<a href="/dead"> Dead Report </a>
+	</h1>
+	</br>
+</font>
+<h1>
+	<a href="/home"> Reported Case </a>
+</h1>
+</br>
 <font color="green">
-<h1><a href="/recovered">click here for  Recovered Report </a></h1></br></font>
+	<h1>
+		<a href="/recovered">Recovered Report </a>
+	</h1>
+	</br>
+</font>
 
 <div>
-<h1 >Total reported case till  yesterday</h1>
-    <font color="red">
-<h1 th:text="${totalReported}"></h1></font>
-</div><div>
+	<font color="aqua">
+		<h1>Reported case till yesterday</h1>
 
-<h1 >Total Recovered case till  yesterday</h1>
-    <font color="green">   <h1 th:text="${totalRecovered}"></h1></font>
-</div><div>
-    <h1 >Total reported case till  yesterday</h1>
-    <font color="red">
-<h1 th:text="${reportedDeath}"></h1>
-    </font>
+		<h1 th:text="${totalReported}"></h1>
+	</font>
+</div>
+<div>
+	<font color="green">
+		<h1>Recovered case till yesterday</h1>
+		<h1 th:text="${totalRecovered}"></h1>
+	</font>
+</div>
+<div>
+	<font color="red">
+		<h1>Reported death till yesterday</h1>
+
+		<h1 th:text="${reportedDeath}"></h1>
+	</font>
 </div>
 <a href=" https://systems.jhu.edu/">
-<h5>
-Data Provided by Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE):</h5>
+	<h5>Data Provided by Johns Hopkins University Center for Systems
+		Science and Engineering (JHU CSSE):</h5>
 </a>
 </body>
 </html>

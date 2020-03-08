@@ -16,7 +16,7 @@ public class HomeController {
     CornaCaseDataService cornaCaseDataService;
 
     @GetMapping("/")
-    @Scheduled(initialDelay = 1000, fixedRate =60000*60*24 )
+   
     public String index(Model model) {
         int totalDeath = 0;
         int totalRecovered = 0;
