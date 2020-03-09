@@ -72,15 +72,16 @@ public class HomeController {
 
 	@GetMapping("/recovered")
 	public String recorvedData(Model model) {
-		int totaldeath = 0;
-		List<DATA> locationdetails = cornaCaseDataService.getDeathData();
+		int totalRecovered = 0;
+		List<DATA> locationdetails = cornaCaseDataService.getRecoveredData();
 		try {
-			totaldeath = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
+			totalRecovered = locationdetails.stream().mapToInt(start -> start.getDate()).sum();
 		} catch (Exception e) {
 
 		}
 		model.addAttribute("locationdetails", locationdetails);
-		model.addAttribute("totaldeath", totaldeath);
+		model.addAttribute("totalRecovered", totalRecovered);
+		System.out.println(totalRecovered);
 
 		return "recovered";
 	}

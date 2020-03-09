@@ -2,16 +2,10 @@ package com.example.Cornacase.Service;
 
 import com.example.Cornacase.Model.DATA;
 import com.opencsv.CSVReader;
-
-
-import org.springframework.boot.web.server.Http2;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.ProcessBuilder.Redirect;
-import java.net.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -21,117 +15,110 @@ import java.util.stream.Collectors;
 @Service
 public class CornaCaseDataService {
 
-	public static String URlvar = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
-	public static String URldeathurl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv";
-	public static String URlRecoveredurl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv";
+    public static String URlvar = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
+    public static String URldeathurl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv";
+    public static String URlRecoveredurl = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv";
 
 
-	public List<DATA> getData()  {
-		List<DATA> inputList = new ArrayList<DATA>();
-		try {
-			URL oracle = new URL(URlvar);
-			URLConnection yc = oracle.openConnection();
+    public List<DATA> getData() {
+        List<DATA> inputList = new ArrayList<DATA>();
+        try {
+            URL oracle = new URL(URlvar);
+            URLConnection yc = oracle.openConnection();
 
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-			// skip the header of the csv
+            BufferedReader br = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+            // skip the header of the csv
 
-			CSVReader reader = new CSVReader(br);
-			List<String[]> allRows = reader.readAll().stream().skip(1).collect(Collectors.toList());
-
-		
-
-			for (String[] row : allRows) {
-				DATA d = new DATA();
-				d.setProvince(row[0]);
-				d.setCountry(row[1]);
-				d.setLat(row[2]);
-				d.setLong(row[3]);
-				d.setDate(Integer.parseInt(row[row.length - 1]));
-				inputList.add(d);
-				d = null;
+            CSVReader reader = new CSVReader(br);
+            List<String[]> allRows = reader.readAll().stream().skip(1).collect(Collectors.toList());
 
 
-			}
-			//System.out.println(inputList);
-		}catch ( Exception e)
-		{
-			System.err.println(e.getStackTrace());
-		}
-		return inputList;
-
-	}
-	public List<DATA> getDeathData()  {
-		List<DATA> inputList = new ArrayList<DATA>();
-		try {
-			URL oracle = new URL(URldeathurl);
-			URLConnection yc = oracle.openConnection();
+            for (String[] row : allRows) {
+                DATA d = new DATA();
+                d.setProvince(row[0]);
+                d.setCountry(row[1]);
+                d.setLat(row[2]);
+                d.setLong(row[3]);
+                d.setDate(Integer.parseInt(row[row.length - 1]));
+                inputList.add(d);
+                d = null;
 
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-			// skip the header of the csv
+            }
+            //System.out.println(inputList);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+        }
+        return inputList;
 
-			CSVReader reader = new CSVReader(br);
-			List<String[]> allRows = reader.readAll().stream().skip(1).collect(Collectors.toList());
+    }
 
-
-
-			for (String[] row : allRows) {
-				DATA d = new DATA();
-				d.setProvince(row[0]);
-				d.setCountry(row[1]);
-				d.setLat(row[2]);
-				d.setLong(row[3]);
-				d.setDate(Integer.parseInt(row[row.length - 1]));
-				inputList.add(d);
-				d = null;
+    public List<DATA> getDeathData() {
+        List<DATA> inputList = new ArrayList<DATA>();
+        try {
+            URL oracle = new URL(URldeathurl);
+            URLConnection yc = oracle.openConnection();
 
 
-			}
-			//System.out.println(inputList);
-		}catch ( Exception e)
-		{
-			System.err.println(e.getStackTrace());
-		}
-		return inputList;
+            BufferedReader br = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+            // skip the header of the csv
 
-	}
-	public List<DATA> getRecoveredData()  {
-		List<DATA> inputList = new ArrayList<DATA>();
-		try {
-			URL oracle = new URL(URlRecoveredurl);
-			URLConnection yc = oracle.openConnection();
+            CSVReader reader = new CSVReader(br);
+            List<String[]> allRows = reader.readAll().stream().skip(1).collect(Collectors.toList());
 
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-			// skip the header of the csv
-
-			CSVReader reader = new CSVReader(br);
-			List<String[]> allRows = reader.readAll().stream().skip(1).collect(Collectors.toList());
-
-
-
-			for (String[] row : allRows) {
-				DATA d = new DATA();
-				d.setProvince(row[0]);
-				d.setCountry(row[1]);
-				d.setLat(row[2]);
-				d.setLong(row[3]);
-				d.setDate(Integer.parseInt(row[row.length - 1]));
-				inputList.add(d);
-				d = null;
+            for (String[] row : allRows) {
+                DATA d = new DATA();
+                d.setProvince(row[0]);
+                d.setCountry(row[1]);
+                d.setLat(row[2]);
+                d.setLong(row[3]);
+                d.setDate(Integer.parseInt(row[row.length - 1]));
+                inputList.add(d);
+                d = null;
 
 
-			}
-			//System.out.println(inputList);
-		}catch ( Exception e)
-		{
-			System.err.println(e.getStackTrace());
-		}
-		return inputList;
+            }
+            //System.out.println(inputList);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+        }
+        return inputList;
 
-	}
+    }
+
+    public List<DATA> getRecoveredData() {
+        List<DATA> inputList = new ArrayList<DATA>();
+        try {
+            URL oracle = new URL(URlRecoveredurl);
+            URLConnection yc = oracle.openConnection();
+            BufferedReader br = new BufferedReader(new InputStreamReader(yc.getInputStream()));
+            // skip the header of the csv
+
+            CSVReader reader = new CSVReader(br);
+            List<String[]> allRows = reader.readAll().stream().skip(1).collect(Collectors.toList());
 
 
-	
+            for (String[] row : allRows) {
+                DATA d = new DATA();
+                d.setProvince(row[0]);
+                d.setCountry(row[1]);
+                d.setLat(row[2]);
+                d.setLong(row[3]);
+                d.setDate(Integer.parseInt(row[row.length - 1]));
+                inputList.add(d);
+                d = null;
+
+
+            }
+            //System.out.println(inputList);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+        }
+        return inputList;
+
+    }
+
+
 }
