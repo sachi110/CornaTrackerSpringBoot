@@ -25,22 +25,21 @@
 <div>
 	<center><h1>Coronavirus Tracking WebAppication </h1></center>
 </div>
-
+<div class="container-fluid">
 <div class="container-fluid">
 	<div class="row">
-
 		<div class="col-sm-6">
 			<font color="red">
 				<h1>
-					<a href="/dead"> Dead Report </a>
+					<u></sup><a href="/dead">Dead Report </a></u>
 				</h1> </br>
 			</font>
 			<h1>
-				<a href="/home"> Reported Case </a>
+				<u>	<a href="/home">Reported Case </a></u>
 			</h1>
 			</br> <font color="green">
 			<h1>
-				<a href="/recovered">Recovered Report </a>
+				<u><a href="/recovered">Recovered Report </a></u>
 			</h1> </br>
 		</font>
 		</div>
@@ -53,29 +52,31 @@
 
 	</div>
 </div>
-<div>
+<div class="row">
 	<font color="aqua">
 		<h1>Reported case till yesterday</h1> <!-- <input type="hidden" id="one1"
 		th:value="${totalReported}"> -->
 		<h1 id="one" th:text="${totalReported}"></h1>
 	</font>
 </div>
-<div>
+<div class="row">
 	<h1>Recovered case till yesterday</h1>
 	<h1 id="two" th:text="${totalRecovered}"></h1>
 	</font>
 </div>
-<div>
+<div class="row">
 	<font color="red">
 		<h1>Reported death till yesterday</h1>
 
 		<h1 id="three" th:text="${reportedDeath}"></h1>
 	</font>
 </div>
-<a href=" https://systems.jhu.edu/">
+<div class="row">
+	<a href=" https://systems.jhu.edu/">
 	<h6>Data Provided by Johns Hopkins University Center for Systems
 		Science and Engineering (JHU CSSE):</h6>
-</a>
+</a></div>
+</div>
 <script>
 	
 	var oneValue = document.getElementById('one').innerHTML;
