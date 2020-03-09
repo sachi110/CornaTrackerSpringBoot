@@ -52,26 +52,27 @@
 
 	</div>
 </div>
-<div class="row">
+<div >
 	<font color="aqua">
 		<h1>Reported case till yesterday</h1> <!-- <input type="hidden" id="one1"
 		th:value="${totalReported}"> -->
 		<h1 id="one" th:text="${totalReported}"></h1>
 	</font>
 </div>
-<div class="row">
-	<h1>Recovered case till yesterday</h1>
+<div >
+	<font color="green">
+	<h1>Recovered case till yesterday</h1></br></font>
 	<h1 id="two" th:text="${totalRecovered}"></h1>
-	</font>
+
 </div>
-<div class="row">
+<div >
 	<font color="red">
 		<h1>Reported death till yesterday</h1>
 
 		<h1 id="three" th:text="${reportedDeath}"></h1>
 	</font>
 </div>
-<div class="row">
+<div >
 	<a href=" https://systems.jhu.edu/">
 	<h6>Data Provided by Johns Hopkins University Center for Systems
 		Science and Engineering (JHU CSSE):</h6>
